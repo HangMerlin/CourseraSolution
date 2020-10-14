@@ -184,7 +184,8 @@ object TimeUsage extends TimeUsageInterface {
   def timeUsageGroupedSqlQuery(viewName: String): String =
       s""" select working, sex, age, round(avg(primaryNeeds), 1), round(avg(work), 1), round(avg(other), 1)
         | from $viewName
-        | group by working, sex, age""".stripMargin
+        | group by working, sex, age
+        | order by working, sex, age""".stripMargin
 
   /**
     * @return A `Dataset[TimeUsageRow]` from the “untyped” `DataFrame`
